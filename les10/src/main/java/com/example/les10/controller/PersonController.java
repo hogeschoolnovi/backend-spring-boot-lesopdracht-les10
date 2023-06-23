@@ -15,6 +15,7 @@ public class PersonController {
     private List<Person> persons = new ArrayList<>();
 
     // constructor waarin alvast enkele Persons in de lijst worden gezet
+    // Dit staat niet in de opdracht, maar is een handig hulpmiddeltje
     public PersonController(){
         Person p1 = new Person();
         Person p2 = new Person();
@@ -69,12 +70,12 @@ public class PersonController {
             }
         }
 
-        // Als er minstens 1 person is gevonden, return dan HttpStatus 204
+        // Als er minstens 1 person is gevonden, return dan HttpStatus 404
         if(aggregator.isEmpty()){
             return ResponseEntity.notFound().build();
         }
-        // Als er geen Person gevonden is met de gegeven naam, return dan HttpStatus 404
-        return ResponseEntity.noContent().build();
+        // Als er geen Person gevonden is met de gegeven naam, return dan HttpStatus 200
+        return ResponseEntity.ok(aggregator);
     }
 
 
